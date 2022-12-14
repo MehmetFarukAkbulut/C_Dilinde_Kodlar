@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>  
+    int adet,islem,ex;
+    double sonuc,x,y,z,i,tut;
+  
+    double getfact(double x){
+    for(i=x; i>=1; i--)sonuc *= i;
+    return sonuc;}
+    double getort2(double x,double y){
+    tut=x+y;sonuc=tut/2;
+    return sonuc;}
+    double getort3(double x, double y, double z){
+    tut=x+y+z;sonuc=tut/3;
+    return sonuc;}
+    double getsqrt(double x){
+    sonuc=sqrt(x);
+    return sonuc;}
+    double getpow(double x,double y){
+    sonuc=pow(x,y);
+    return sonuc;}
+int main(){
+
+    progbasi:
+    sonuc=1.0;
+    printf("Girmek istediğiniz sayı adedini giriniz(1,2,3)>\n");scanf("%d",&adet);
+switch(adet){
+case 1:
+    case1basi:
+     printf("Yapılmasını istediğiniz işlemi seçiniz:\n 1.Faktoriyel\n 2.Kare\n 3.Karekök\n 4. Ana menüye dön\n");scanf("%d",&islem);
+             if(islem==4){ printf("Ana menüye dönülüyor..\n");goto progbasi;}
+             else if(islem<=0 || islem>4){printf("Yanlış seçim yaptınız tekrar deneyiniz..\n");goto case1basi; }
+             sayibasi:
+            printf("Sayıyı giriniz:\n");scanf("%lf",&x);
+    switch(islem){
+        case 1:
+            if(x<0) {printf("Hata: Negatif sayıların faktoriyeli yoktur.\n Lütfen Tekrar Deneyiniz...");goto sayibasi;}
+            getfact(x);break;
+        case 2: sonuc=x*x;break;
+        case 3: getsqrt(x);break;}x=0;break;
+case 2:
+        case2basi:
+        printf("Yapılmasını istediğiniz işlemi seçiniz:\n 1.Toplama\n 2.Çarpma\n 3.Ortalama\n 4.Çıkarma\n 5.Bölme\n 6.Üssü alma\n 7.Ana menü\n")    ;
+        scanf("%d",&islem); if(islem==7){ printf("Ana menüye dönülüyor..\n");goto progbasi;}
+                     else if(islem<=0 || islem>7){printf("Yanlış seçim yaptınız tekrar deneyiniz..\n");goto case2basi; }
+        printf("Sayıları giriniz:\n");scanf("%lf %lf",&x,&y);
+    switch(islem){
+        case 1: sonuc=x+y;break;
+        case 2: sonuc=x*y;break;
+        case 3: getort2(x,y);break;
+        case 4: sonuc=x-y;break;
+        case 5: sonuc=x/y;break;
+        case 6: getpow(x,y);break;}x=0,y=0;break;      
+case 3:
+    case3basi:
+        printf("Yapılmasını istediğiniz işlemi seçiniz:\n 1.Toplama\n 2.Çarpma\n 3.Ortalama\n 4.Ana menüye dön.\n")  ; 
+        scanf("%d",&islem); if(islem==4){ printf("Ana menüye dönülüyor..\n");goto progbasi;}
+                         else if(islem<=0 || islem>4){printf("Yanlış seçim yaptınız tekrar deneyiniz..\n");goto case3basi; }
+        printf("Sayıları giriniz:\n");scanf("%lf %lf %lf",&x,&y,&z);
+    switch(islem){
+        case 1: sonuc=x+y+z;break;
+        case 2: sonuc=x*y*z;break;
+        case 3: getort3(x,y,z);break;}x=0,y=0,z=0;break;
+        default:printf("Yanlış seçim yaptınız tekrar deneyiniz..\n");goto progbasi;}             
+    printf("İşlem sonucu:%.2lf\n",sonuc);
+    printf("Program sonlansın mı? 0(H)/1(E)\n");scanf("%d",&ex);
+    if (ex==0){printf("Program tekrar başlatılıyor..\n");goto progbasi;}
+    else (ex==1);{printf("Program sonlandırılıyor..\n");return 0;}
+    }
+
